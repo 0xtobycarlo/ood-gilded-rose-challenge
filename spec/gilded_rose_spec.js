@@ -8,42 +8,6 @@ describe('Gilded Rose', () => {
     expect(items[0].name).toEqual('foo')
   })
 
-  it('returns true as item has a valid quality', () => {
-    // setup
-    const item = new Item('Aged Brie', 2, 0)
-    const gildedRose = new Shop()
-
-    // verify
-    expect(gildedRose.isValidQuality(item)).toEqual(true)
-  })
-
-  it('returns false as item has a invalid quality', () => {
-    // setup
-    const item = new Item('Sulfurus, Hand of Ragnaros', 0, 70)
-    const gildedRose = new Shop()
-
-    // verify
-    expect(gildedRose.isValidQuality(item)).toEqual(false)
-  })
-
-  it('returns false as item has quality less than 0', () => {
-    // setup
-    const item = new Item('Conjured Mana Cake', 3, -3)
-    const gildedRose = new Shop()
-
-    // verify
-    expect(gildedRose.isValidQuality(item)).toEqual(false)
-  })
-
-  it('returns false as item has quality more than 50', () => {
-    // setup
-    const item = new Item('Conjured Mana Cake', 3, 51)
-    const gildedRose = new Shop()
-
-    // verify
-    expect(gildedRose.isValidQuality(item)).toEqual(false)
-  })
-
   it('decreases agedBries sellIn and increases quality', () => {
     // setup
     const agedBrie = new Item('Aged Brie', 2, 0)
@@ -114,7 +78,7 @@ describe('Gilded Rose', () => {
     expect(gildedRose.items[0].quality).toEqual(0)
   })
 
-  it('decreases double the quality', () => {
+  it('decreases double the quality since it is conjurted', () => {
     // setup
     const conjured = new Item('Conjured Mana Cake', 3, 6)
     const gildedRose = new Shop([conjured])
